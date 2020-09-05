@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Map {
 
-	//Kommentar
+	//test
 	
 	private int width, height;
 	
