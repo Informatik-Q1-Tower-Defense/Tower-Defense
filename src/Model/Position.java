@@ -10,4 +10,8 @@ public class Position {
         this.y = y;
     }
 
+    public static void sortWay(Position[] way) {
+
+
+    }
 }
