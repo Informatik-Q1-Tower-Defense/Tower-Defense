@@ -6,8 +6,6 @@ import java.util.Scanner;
 
 public class Map {
 
-	//test
-	
 	private int width, height;
 	
 	private Position[] avaidablePositions;

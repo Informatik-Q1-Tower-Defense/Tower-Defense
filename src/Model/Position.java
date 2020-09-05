@@ -1,8 +1,6 @@
 package Model;
 
 public class Position {
-    
-    //ein kommentar
 
     public int x;
     public int y;
