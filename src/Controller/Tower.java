@@ -3,6 +3,7 @@ import Model.*;
 
 public class Tower {
 
+    private String pictureSource = "/pics/Tower.png";
     private Position position;
     private int damage;
     private int cost;
@@ -24,8 +25,11 @@ public class Tower {
     }
 
     public Position getPosition() {
-
         return this.position;
+    }
+
+    public String getPictureSource(){
+        return this.pictureSource;
     }
 
     public void shoot(Wave wave) {
