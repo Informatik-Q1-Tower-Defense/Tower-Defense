@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Position;
+import Model.Tower;
 
 public class Player {
 
