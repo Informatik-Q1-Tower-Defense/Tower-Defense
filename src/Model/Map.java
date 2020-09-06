@@ -6,11 +6,11 @@ import java.util.Scanner;
 
 public class Map {
 
-	private int width, height;
+	public int width, height;
 	
-	private Position[] avaidablePositions;
-	private Position[] way;
-	private Tower[] towers;
+	public Position[] avaidablePositions;
+	public Position[] way;
+	public Tower[] towers;
 
 	public Map(String filePath) {
 		
@@ -31,6 +31,8 @@ public class Map {
 			
 			throw new IllegalArgumentException("File not found");
 		}
+
+		System.out.println(content);
 		
 		char[] contentCA = content.toCharArray();
 
@@ -63,6 +65,13 @@ public class Map {
 		this.towers = new Tower[lengthOfTowers];
 		
 		Position currentPosition = new Position(0, 0);
+
+		Position startOfWay = null;
+		Position[] way = new Position[lengthOfWay - 1];
+
+		int towerIndex = 0;
+		int avaidablePositionIndex = 0;
+		int wayIndex = 0;
 		
 		for(int i = 0; i < contentCA.length; i++) {
 			
@@ -70,15 +79,22 @@ public class Map {
 
 				if (contentCA[i] == 't') {
 
-					this.towers[i] = new Tower(currentPosition);
+					this.towers[towerIndex] = new Tower(currentPosition);
+					towerIndex++;
 				}
 				else if (contentCA[i] == '_') {
 
-					this.avaidablePositions[i] = currentPosition;
+					this.avaidablePositions[avaidablePositionIndex] = currentPosition;
+					avaidablePositionIndex++;
 				}
-				else if (contentCA[i] == 'S' || contentCA[i] == 'X' || contentCA[i] == '>' || contentCA[i] == '<' || contentCA[i] == 'V' || contentCA[i] == '^') {
+				else if (contentCA[i] == 'S') {
 
-					this.way[i] = currentPosition;
+					startOfWay = currentPosition;
+				}
+				else if (contentCA[i] == 'X' || contentCA[i] == '>' || contentCA[i] == '<' || contentCA[i] == 'V' || contentCA[i] == '^') {
+
+					way[wayIndex] = currentPosition;
+					wayIndex++;
 				}
 				
 				currentPosition.x++;
@@ -89,6 +105,8 @@ public class Map {
 				currentPosition.x = 0;
 			}
 		}
+
+		this.way = Position.sortWay(startOfWay, way);
 
 		this.width = currentPosition.x;
 		this.height = currentPosition.y;
