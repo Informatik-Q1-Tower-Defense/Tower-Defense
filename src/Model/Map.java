@@ -3,6 +3,7 @@ package Model;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import Controller.Tower;
 
 public class Map {
 

@@ -1,5 +1,5 @@
 package Controller;
-import Model.Position;
+import Model.*;
 
 public class Tower {
 
@@ -23,10 +23,15 @@ public class Tower {
         return this.cost;
     }
 
+    public Position getPosition() {
+
+        return this.position;
+    }
+
     public void shoot(Wave wave) {
         Enemy[] enemies = wave.enemies;
         for (int i = 0; i < enemies.length; i++) {
-            eRange = Math.sqrt(Math.abs((enemies[i].getX()-postion.x)*(enemies[i].getX()-postion.x) + (enemies[i].getY()-postion.y)*(enemies[i].getY()-postion.y))) ;
+            double eRange = Math.sqrt(Math.abs((enemies[i].getX()-position.x)*(enemies[i].getX()-position.x) + (enemies[i].getY()-position.y)*(enemies[i].getY()-position.y))) ;
             if (this.range > eRange) {
                 enemies[i].hp -= this.damage;
                 break;
