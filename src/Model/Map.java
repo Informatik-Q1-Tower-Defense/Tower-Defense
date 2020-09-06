@@ -24,16 +24,14 @@ public class Map {
 			
 			while(sc.hasNextLine()) {
 				
-				content += sc.nextLine();
+				content += sc.nextLine() + "\n";
 			}
 			sc.close();
 		}
 		catch(FileNotFoundException e) {
-			
+
 			throw new IllegalArgumentException("File not found");
 		}
-
-		System.out.println(content);
 		
 		char[] contentCA = content.toCharArray();
 
@@ -55,7 +53,7 @@ public class Map {
 
 				lengthOfWay++;
 			}
-			else if (c != '#') {
+			else if (c != '#' && c != '\n') {
 
 				throw new IllegalArgumentException("Unkown charracter in .txt file");
 			}
@@ -80,21 +78,37 @@ public class Map {
 
 				if (contentCA[i] == 't') {
 
-					this.towers[towerIndex] = new Tower(currentPosition);
+					Position position = new Position(0,0);
+					position.x = currentPosition.x;
+					position.y = currentPosition.y;
+
+					this.towers[towerIndex] = new Tower(position);
 					towerIndex++;
 				}
 				else if (contentCA[i] == '_') {
 
-					this.avaidablePositions[avaidablePositionIndex] = currentPosition;
+					Position position = new Position(0,0);
+					position.x = currentPosition.x;
+					position.y = currentPosition.y;
+
+					this.avaidablePositions[avaidablePositionIndex] = position;
 					avaidablePositionIndex++;
 				}
 				else if (contentCA[i] == 'S') {
 
-					startOfWay = currentPosition;
+					Position position = new Position(0,0);
+					position.x = currentPosition.x;
+					position.y = currentPosition.y;
+
+					startOfWay = position;
 				}
 				else if (contentCA[i] == 'X' || contentCA[i] == '>' || contentCA[i] == '<' || contentCA[i] == 'V' || contentCA[i] == '^') {
 
-					way[wayIndex] = currentPosition;
+					Position position = new Position(0,0);
+					position.x = currentPosition.x;
+					position.y = currentPosition.y;
+
+					way[wayIndex] = position;
 					wayIndex++;
 				}
 				

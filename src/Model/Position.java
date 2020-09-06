@@ -21,7 +21,9 @@ public class Position {
 
         result[0] = start;
 
-        for (int i = 0; i < result.length; i++) {
+        boolean condition = true;
+
+        for (int i = 0; i < (result.length - 1); i++) {
 
             for (Position position: way) {
 
@@ -30,9 +32,25 @@ public class Position {
                     throw new IllegalArgumentException("emty parrameters");
                 }
 
-                else if ((position.x == result[i].x & position.y == result[i].y + 1) | (position.x == result[i].x & position.y == result[i].y - 1) | (position.y == result[i].y & position.x == result[i].x + 1) | (position.y == result[i].y & position.x == result[i].x - 1)) {
+                else if ((position.x == result[i].x && position.y == result[i].y + 1) || (position.x == result[i].x && position.y == result[i].y - 1) || (position.y == result[i].y && position.x == result[i].x + 1) || (position.y == result[i].y && position.x == result[i].x - 1)) {
 
-                    result[i + 1] = position;
+                    for(Position element: result) {
+
+                        if (element != null) {
+
+                            if (element.x == position.x && element.y == position.y) {
+
+                                condition = false;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (condition) {
+
+                        result[i + 1] = position;
+                    }
+                    condition = true;
                 }
             }
         }
