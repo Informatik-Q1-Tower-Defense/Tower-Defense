@@ -122,7 +122,7 @@ public class Map {
 
 		this.way = Position.sortWay(startOfWay, way);
 
-		this.width = currentPosition.x;
-		this.height = currentPosition.y;
+		this.width = currentPosition.x + 1;
+		this.height = currentPosition.y + 1;
 	}
 }

@@ -1,6 +1,7 @@
 package Controller;
 
 import View.*;
+import Model.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -14,6 +15,10 @@ public class ViewController extends Application {
     public void start(Stage primaryStage) {
 
         //view-Object erstellen (Ausgangspunkt des gesamten Programms)
+
+        Map map = new Map("Path");
+
+        this.view = new MapView(0, 0, map);
 
         Pane root = new Pane();
         Scene scene = new Scene(root, this.view.getWidth(), this.view.getHeight());
