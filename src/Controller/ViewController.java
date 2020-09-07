@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.scene.Node;
 
 public class ViewController extends Application {
 
@@ -17,7 +18,12 @@ public class ViewController extends Application {
         Pane root = new Pane();
         Scene scene = new Scene(root, this.view.getWidth(), this.view.getHeight());
 
-        root.getChildren().addAll(view.render());
+        Node[] nodes = this.view.render();
+
+        for(Node node: nodes) {
+
+            root.getChildren().add(node);
+        }
 
         primaryStage.setOnCloseRequest(e -> System.exit(0));
         primaryStage.setTitle("Tower Defense");

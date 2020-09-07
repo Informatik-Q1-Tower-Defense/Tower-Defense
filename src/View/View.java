@@ -47,7 +47,9 @@ public abstract class View {
 
         ArrayList<Node> nodes = new ArrayList<Node>();
 
-        for (Node node: this.body()) {
+        Node[] rawNodes = this.body();
+
+        for (Node node: rawNodes) {
 
             node.setLayoutX(node.getLayoutX() + this.center.x);
             node.setLayoutY(node.getLayoutY() + this.center.y);
