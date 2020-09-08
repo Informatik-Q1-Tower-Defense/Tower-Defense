@@ -9,12 +9,13 @@ public class Enemy {
     
     private Position currentPositionIndex;
     
-    public Enemy(int damage, int hp, int speed) {
+    public Enemy(int damage, int hp, int speed, int win) {
         
         this.currentPositionIndex = 0;
         this.hp = hp;
         this.damage = damage;
         this.speed = speed;
+        this.win = win;
     }
     
     public int getPositionIndex() {
@@ -31,4 +32,18 @@ public class Enemy {
         
         this.currentPositionIndex++;
     }
+    
+    public void onDamage() {
+        hp -= Tower.damage;
+        
+        if(hp <= 0) {
+            Player.Money += win;
+        }
+        
+    }
+    
+    public void onReachEnd() {
+        Player.hp -= damage;
+    }
+    
 }
