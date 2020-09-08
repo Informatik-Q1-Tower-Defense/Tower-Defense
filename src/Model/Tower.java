@@ -34,8 +34,8 @@ public abstract class Tower {
     public abstract void shoot(Wave wave) {
         /*Enemy[] enemies = wave.enemies;
         for (int i = 0; i < enemies.length; i++) {
-            double eRange = Math.sqrt(Math.abs((enemies[i].getX()-position.x)*(enemies[i].getX()-position.x) + (enemies[i].getY()-position.y)*(enemies[i].getY()-position.y))) ;
-            if (this.range > eRange) {
+            double enemyDistance = Math.sqrt(Math.abs((enemies[i].getX()-position.x)*(enemies[i].getX()-position.x) + (enemies[i].getY()-position.y)*(enemies[i].getY()-position.y))) ;
+            if (this.range > enemyDistance) {
                 enemies[i].hp -= this.damage;
                 break;
             } // end of if
