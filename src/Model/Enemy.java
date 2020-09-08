@@ -1,25 +1,24 @@
 package Model;
 
 public class Enemy {
-    
-    public static Position spawn;
 
-    private int damage, hp, speed;
+    public int hp, speed;
+    public int freezedSpeed;
+    private int damage;
     private String imageSource = "";
     
-    private Position currentPosition;
+    public Position currentPositionIndex;
     
     public Enemy(int damage, int hp, int speed) {
         
-        this.currentPosition = Enemy.spawn;
-        
+        this.currentPositionIndex = 0;
         this.hp = hp;
         this.damage = damage;
         this.speed = speed;
     }
     
-    public walk() {
+    public move() {
         
-        //code
+        this.currentPositionIndex++;
     }
 }
