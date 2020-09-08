@@ -12,13 +12,15 @@ public class ViewController extends Application {
 
     protected View view;
 
+    public static Map mapData;
+
     public void start(Stage primaryStage) {
 
         //view-Object erstellen (Ausgangspunkt des gesamten Programms)
 
-        Map map = new Map("Path");
+        ViewController.mapData = new Map("Path");
 
-        this.view = new MapView(0, 0, map);
+        this.view = new MapView(0, 0, ViewController.mapData);
 
         Pane root = new Pane();
         Scene scene = new Scene(root, this.view.getWidth(), this.view.getHeight());

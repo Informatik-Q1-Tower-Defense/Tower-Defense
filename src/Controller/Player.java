@@ -1,12 +1,11 @@
 package Controller;
 
-import Model.Position;
-import Model.Tower;
+import Model.*;
 
 public class Player {
 
-    private int money;
-    private int hp;
+    public int money;
+    public int hp;
 
     public Player(int hpTemp, int moneyTemp){
         this.money = moneyTemp;
@@ -14,7 +13,8 @@ public class Player {
     }
 
     public void buy(Tower tower, Position pos){
-        tower = new Tower(pos);
+
+        tower = new FreezeTower(pos);
         this.money -=  tower.getCost();
         if ( this.money < 0) {
             this.money += tower.getCost();

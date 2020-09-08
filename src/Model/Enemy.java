@@ -1,5 +1,6 @@
 package Model;
 
+import Controller.Player;
 public class Enemy {
 
     public int hp, speed;
@@ -7,7 +8,7 @@ public class Enemy {
     private String imageSource = "";
     public double win;
     
-    private Position currentPositionIndex;
+    private int currentPositionIndex;
     
     public Enemy(int damage, int hp, int speed, int win) {
         
@@ -23,27 +24,28 @@ public class Enemy {
         return this.currentPositionIndex;
     }
     
-    public void freeze() {
+    public void freeze(int freezePower) {
         
-        this.speed -= this.speed / 10; //Ändern
+        this.speed -= freezePower;
     }
     
-    public move() {
+    public void move() {
         
         this.currentPositionIndex++;
     }
     
-    public void onDamage() {
-        hp -= Tower.damage;
+    public void onDamage(Tower tower, Player player) {
+
+        hp -= tower.getDamage();
         
         if(hp <= 0) {
-            Player.Money += win;
+            player.money += win;
         }
         
     }
     
-    public void onReachEnd() {
-        Player.hp -= damage;
+    public void onReachEnd(Player player) {
+        player.hp -= damage;
     }
     
 }
