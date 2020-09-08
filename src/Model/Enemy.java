@@ -3,11 +3,10 @@ package Model;
 public class Enemy {
 
     public int hp, speed;
-    public int freezedSpeed;
     private int damage;
     private String imageSource = "";
     
-    public Position currentPositionIndex;
+    private Position currentPositionIndex;
     
     public Enemy(int damage, int hp, int speed) {
         
@@ -15,6 +14,16 @@ public class Enemy {
         this.hp = hp;
         this.damage = damage;
         this.speed = speed;
+    }
+    
+    public int getPositionIndex() {
+     
+        return this.currentPositionIndex;
+    }
+    
+    public void freeze() {
+        
+        this.speed -= this.speed / 10; //Ändern
     }
     
     public move() {
