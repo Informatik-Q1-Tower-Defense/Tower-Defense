@@ -2,7 +2,7 @@ package Model;
 
 public class Tower {
 
-    private String pictureSource = "/pics/Tower.png";
+    private String pictureSource;
     private Position position;
     private int damage;
     private int cost;
@@ -31,14 +31,14 @@ public class Tower {
         return this.pictureSource;
     }
 
-    public void shoot(Wave wave) {
-        Enemy[] enemies = wave.enemies;
+    public abstract void shoot(Wave wave) {
+        /*Enemy[] enemies = wave.enemies;
         for (int i = 0; i < enemies.length; i++) {
             double eRange = Math.sqrt(Math.abs((enemies[i].getX()-position.x)*(enemies[i].getX()-position.x) + (enemies[i].getY()-position.y)*(enemies[i].getY()-position.y))) ;
             if (this.range > eRange) {
                 enemies[i].hp -= this.damage;
                 break;
             } // end of if
-        }
+        }*/
     }
 }
