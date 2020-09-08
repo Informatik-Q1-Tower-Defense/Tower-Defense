@@ -39,7 +39,7 @@ public class MapView extends View {
 
             randomNumber = Math.random();
 
-            if (randomNumber < 0.5) {
+            if (randomNumber < 0.667) {
 
                 this.map[element.x][element.y].setImage(this.grass);
             }
