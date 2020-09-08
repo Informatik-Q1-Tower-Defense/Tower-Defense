@@ -48,13 +48,13 @@ public class Map {
 
 				lengthOfAvaidablePositions++;
 			}
-			else if (c == 'S' || c == 'X' || c == '>' || c == '<' || c == 'V' || c == '^') {
+			else if (c == 'S' || c == 'X' || c == '>' || c == '<' || c == 'v' || c == '^') {
 
 				lengthOfWay++;
 			}
 			else if (c != '#' && c != '\n') {
 
-				throw new IllegalArgumentException("Unkown charracter in .txt file");
+				throw new IllegalArgumentException("Unkown charracter (" + c + ") in .txt file");
 			}
 		}
 
@@ -81,7 +81,7 @@ public class Map {
 					position.x = currentPosition.x;
 					position.y = currentPosition.y;
 
-					this.towers[towerIndex] = new Tower(position);
+					this.towers[towerIndex] = new FreezeTower(position);
 					towerIndex++;
 				}
 				else if (contentCA[i] == '_') {
@@ -101,7 +101,7 @@ public class Map {
 
 					startOfWay = position;
 				}
-				else if (contentCA[i] == 'X' || contentCA[i] == '>' || contentCA[i] == '<' || contentCA[i] == 'V' || contentCA[i] == '^') {
+				else if (contentCA[i] == 'X' || contentCA[i] == '>' || contentCA[i] == '<' || contentCA[i] == 'v' || contentCA[i] == '^') {
 
 					Position position = new Position(0,0);
 					position.x = currentPosition.x;
@@ -114,7 +114,9 @@ public class Map {
 				currentPosition.x++;
 			}
 			else {
-				
+
+				this.width = currentPosition.x + 1;
+
 				currentPosition.y++;
 				currentPosition.x = 0;
 			}
@@ -122,7 +124,6 @@ public class Map {
 
 		this.way = Position.sortWay(startOfWay, way);
 
-		this.width = currentPosition.x + 1;
-		this.height = currentPosition.y + 1;
+		this.height = currentPosition.y;
 	}
 }

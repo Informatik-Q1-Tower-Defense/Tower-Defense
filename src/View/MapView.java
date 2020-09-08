@@ -2,45 +2,59 @@ package View;
 
 import javafx.scene.Node;
 import Model.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import java.util.ArrayList;
 
 public class MapView extends View {
 
-    private Rectangle[][] map;
+    private ImageView[][] map;
+
+    private Image border = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Border.png");
+    private Image grass = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Grass.png");
+    private Image tower = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Tower.png");
+    private Image way = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Way.png");
+    private Image tree = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Tree.png");
 
     public MapView(int x, int y, Map mapData) {
 
         super(mapData.width * 30, mapData.height * 30);
         super.setCenter(x,y);
 
-        this.map = new Rectangle[mapData.width][mapData.height];
+        this.map = new ImageView[mapData.width][mapData.height];
 
-        for(int xValue = 0; x < mapData.width; xValue++) {
+        for(int xValue = 0; xValue < mapData.width; xValue++) {
 
-            for(int yValue = 0; x < mapData.height; yValue++) {
+            for(int yValue = 0; yValue < mapData.height; yValue++) {
 
-                this.map[xValue][yValue] = new Rectangle();
-                this.map[xValue][yValue].setHeight(30);
-                this.map[xValue][yValue].setWidth(30);
+                this.map[xValue][yValue] = new ImageView(this.border);
                 this.map[xValue][yValue].setLayoutX(xValue * 30);
                 this.map[xValue][yValue].setLayoutY(yValue * 30);
-                this.map[xValue][yValue].setFill(Color.GRAY);
             }
         }
 
+        double randomNumber = 0.0;
+
         for(Position element: mapData.avaidablePositions) {
 
-            this.map[element.x][element.y].setFill(Color.YELLOW);
+            randomNumber = Math.random();
+
+            if (randomNumber < 0.5) {
+
+                this.map[element.x][element.y].setImage(this.grass);
+            }
+            else {
+
+                this.map[element.x][element.y].setImage(this.tree);
+            }
         }
         for(Position element: mapData.way) {
 
-            this.map[element.x][element.y].setFill(Color.BLUE);
+            this.map[element.x][element.y].setImage(this.way);
         }
         for(Tower tower: mapData.towers) {
 
-            this.map[tower.getPosition().x][tower.getPosition().y].setFill(Color.RED);
+            this.map[tower.getPosition().x][tower.getPosition().y].setImage(this.tower);
         }
     }
 
@@ -48,11 +62,11 @@ public class MapView extends View {
 
         ArrayList<Node> nodes = new ArrayList<Node>();
 
-        for(Rectangle[] column: this.map) {
+        for(ImageView[] column: this.map) {
 
-            for(Rectangle rect: column) {
+            for(ImageView imageView: column) {
 
-                nodes.add(rect);
+                nodes.add(imageView);
             }
         }
 
