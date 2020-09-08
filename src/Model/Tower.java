@@ -1,6 +1,6 @@
 package Model;
 
-public class Tower {
+public abstract class Tower {
 
     private String pictureSource;
     private Position position;
