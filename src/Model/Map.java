@@ -115,7 +115,7 @@ public class Map {
 			}
 			else {
 
-				this.width = currentPosition.x + 1;
+				this.width = currentPosition.x;
 
 				currentPosition.y++;
 				currentPosition.x = 0;
