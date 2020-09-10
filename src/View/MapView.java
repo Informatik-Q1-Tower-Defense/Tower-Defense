@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class MapView extends View {
 
     private ImageView[][] map;
+    public Map mapData;
 
     private Image border = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Border.png");
     private Image grass = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Grass.png");
@@ -20,6 +21,8 @@ public class MapView extends View {
 
         super(mapData.width * 30, mapData.height * 30);
         super.setCenter(x,y);
+
+        this.mapData = mapData;
 
         this.map = new ImageView[mapData.width][mapData.height];
 
@@ -52,6 +55,15 @@ public class MapView extends View {
 
             this.map[element.x][element.y].setImage(this.way);
         }
+
+        for(Tower tower: mapData.towers) {
+
+            this.map[tower.getPosition().x][tower.getPosition().y].setImage(this.tower);
+        }
+    }
+
+    public void update() {
+
         for(Tower tower: mapData.towers) {
 
             this.map[tower.getPosition().x][tower.getPosition().y].setImage(this.tower);

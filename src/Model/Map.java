@@ -103,4 +103,53 @@ public class Map {
 
 		this.height = currentPosition.y;
 	}
+
+	public void addTower(Tower tower) {
+
+		for(Position element: this.avaidablePositions) {
+
+			if (tower.getPosition().x == element.x && tower.getPosition().y == element.y) {
+
+				ArrayList<Tower> towers = new ArrayList<Tower>();
+
+				for(Tower towersElement: this.towers) {
+
+					towers.add(towersElement);
+				}
+
+				towers.add(tower);
+
+				Tower[] newTowers = new Tower[towers.size()];
+
+				this.towers = towers.toArray(newTowers);
+
+				break;
+			}
+		}
+	}
+
+	public void removeTowerAt(Position position) {
+
+		for(int i = 0; i < this.towers.length; i++) {
+
+			if (this.towers[i].getPosition().x == position.x && this.towers[i].getPosition().y == position.y) {
+
+				ArrayList<Tower> towers = new ArrayList<Tower>();
+
+				for(int index = 0; index < this.towers.length; index ++) {
+
+					if (index != i) {
+
+						towers.add(this.towers[index]);
+					}
+				}
+
+				Tower[] newTowers = new Tower[towers.size()];
+
+				this.towers = towers.toArray(newTowers);
+
+				break;
+			}
+		}
+	}
 }

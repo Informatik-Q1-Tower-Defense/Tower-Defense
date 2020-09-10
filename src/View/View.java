@@ -43,6 +43,8 @@ public abstract class View {
 
     abstract public Node[] body();
 
+    abstract public void update();
+
     public final Node[] render() {
 
         ArrayList<Node> nodes = new ArrayList<Node>();
