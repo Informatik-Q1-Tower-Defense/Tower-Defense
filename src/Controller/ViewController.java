@@ -10,7 +10,7 @@ import javafx.scene.Node;
 
 public class ViewController extends Application {
 
-    protected View view;
+    private View view;
 
     public static Map mapData;
 

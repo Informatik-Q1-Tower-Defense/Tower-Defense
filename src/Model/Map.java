@@ -1,7 +1,10 @@
 package Model;
 
+import javafx.geometry.Pos;
+
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Map {
@@ -34,42 +37,13 @@ public class Map {
 		
 		char[] contentCA = content.toCharArray();
 
-		int lengthOfWay = 0;
-		int lengthOfTowers = 0;
-		int lengthOfAvaidablePositions = 0;
-
-		for(char c: contentCA) {
-
-			if (c == 't') {
-
-				lengthOfTowers++;
-			}
-			else if (c == '_') {
-
-				lengthOfAvaidablePositions++;
-			}
-			else if (c == 'S' || c == 'X' || c == '>' || c == '<' || c == 'v' || c == '^') {
-
-				lengthOfWay++;
-			}
-			else if (c != '#' && c != '\n') {
-
-				throw new IllegalArgumentException("Unkown charracter (" + c + ") in .txt file");
-			}
-		}
-
-		this.way = new Position[lengthOfWay];
-		this.avaidablePositions = new Position[lengthOfAvaidablePositions];
-		this.towers = new Tower[lengthOfTowers];
+		ArrayList<Position> way = new ArrayList<Position>();
+		ArrayList<Position> avaidablePositions = new ArrayList<Position>();
+		ArrayList<Tower> towers = new ArrayList<Tower>();
 		
 		Position currentPosition = new Position(0, 0);
 
 		Position startOfWay = null;
-		Position[] way = new Position[lengthOfWay - 1];
-
-		int towerIndex = 0;
-		int avaidablePositionIndex = 0;
-		int wayIndex = 0;
 		
 		for(int i = 0; i < contentCA.length; i++) {
 			
@@ -81,8 +55,7 @@ public class Map {
 					position.x = currentPosition.x;
 					position.y = currentPosition.y;
 
-					this.towers[towerIndex] = new FreezeTower(position);
-					towerIndex++;
+					towers.add(new FreezeTower(position));
 				}
 				else if (contentCA[i] == '_') {
 
@@ -90,8 +63,7 @@ public class Map {
 					position.x = currentPosition.x;
 					position.y = currentPosition.y;
 
-					this.avaidablePositions[avaidablePositionIndex] = position;
-					avaidablePositionIndex++;
+					avaidablePositions.add(position);
 				}
 				else if (contentCA[i] == 'S') {
 
@@ -107,8 +79,7 @@ public class Map {
 					position.x = currentPosition.x;
 					position.y = currentPosition.y;
 
-					way[wayIndex] = position;
-					wayIndex++;
+					way.add(position);
 				}
 				
 				currentPosition.x++;
@@ -122,7 +93,13 @@ public class Map {
 			}
 		}
 
-		this.way = Position.sortWay(startOfWay, way);
+		Position[] unsortedWay = new Position[way.size()];
+		Tower[] towersRaw = new Tower[towers.size()];
+		Position[] avaidablePositionsRaw = new Position[avaidablePositions.size()];
+
+		this.way = Position.sortWay(startOfWay, way.toArray(unsortedWay));
+		this.towers = towers.toArray(towersRaw);
+		this.avaidablePositions = avaidablePositions.toArray(avaidablePositionsRaw);
 
 		this.height = currentPosition.y;
 	}
