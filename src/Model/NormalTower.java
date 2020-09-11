@@ -10,8 +10,8 @@ public class FreezeTower extends Tower {
 
     super(pos);
     
-    super.setPictureSource("");
-    super.setCost(150);
+    super.pictureSource = "/pics/freezeTower.png";
+    super.cost = 200;
     
     this.freezePoints = 10;
   }
@@ -23,8 +23,8 @@ public class FreezeTower extends Tower {
 
     for (int i = 0; i < enemies.length; i++) {
       double eRange = Math.sqrt(Math.abs((way[enemies[i].getPositionIndex()].x-super.getPosition().x)*(way[enemies[i].getPositionIndex()].x-super.getPosition().x) + (way[enemies[i].getPositionIndex()].y-super.getPosition().y)*(way[enemies[i].getPositionIndex()].y-super.getPosition().y))) ;
-      if (super.getRange() > eRange) {
-        enemies[i].hp -= super.getDamage();
+      if (super.range > eRange) {
+        enemies[i].hp -= super.damage;
         break;
       } // end of if
     }
