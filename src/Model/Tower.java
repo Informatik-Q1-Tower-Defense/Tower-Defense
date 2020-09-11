@@ -23,6 +23,10 @@ public abstract class Tower {
     public int getCost(){
         return this.cost;
     }
+    
+    public Position getPosition(){
+        return position
+    }
 
     public abstract void shoot(Wave wave); 
 }
