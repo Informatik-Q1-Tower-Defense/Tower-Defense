@@ -34,9 +34,7 @@ public class Enemy {
         this.currentPositionIndex++;
     }
     
-    public void onDamage(Tower tower, Player player) {
-
-        hp -= tower.getDamage();
+    public void onDamage(Player player) {
         
         if(hp <= 0) {
             player.money += win;
