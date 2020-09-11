@@ -2,13 +2,13 @@ package Model;
 
 public abstract class Tower {
 
-    private String pictureSource;
-    private Position position;
+    protected String pictureSource;
+    protected Position position;
     
-    private int damage;
-    private int cost;
-    private int range;
-    private int bulletspeed;
+    protected int damage;
+    protected int cost;
+    protected int range;
+    protected int bulletspeed;
 
     public Tower(Position pos){
 
