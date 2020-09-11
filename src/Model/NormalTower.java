@@ -2,7 +2,7 @@ package Model;
 
 import Controller.ViewController;
 
-public class FreezeTower extends Tower {
+public class NormalTower extends Tower {
   
   private int freezePoints;
   
@@ -10,7 +10,7 @@ public class FreezeTower extends Tower {
 
     super(pos);
     
-    super.pictureSource = "/pics/freezeTower.png";
+    super.pictureSource = "/pics/normalTower.png";
     super.cost = 200;
     
     this.freezePoints = 10;
