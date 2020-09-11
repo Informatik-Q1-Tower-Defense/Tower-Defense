@@ -22,7 +22,7 @@ public class NormalTower extends Tower {
     Position[] way = ViewController.mapData.way;
 
     for (int i = 0; i < enemies.length; i++) {
-      double eRange = Math.sqrt(Math.abs((way[enemies[i].getPositionIndex()].x-super.getPosition().x)*(way[enemies[i].getPositionIndex()].x-super.getPosition().x) + (way[enemies[i].getPositionIndex()].y-super.getPosition().y)*(way[enemies[i].getPositionIndex()].y-super.getPosition().y))) ;
+      double eRange = Math.sqrt(Math.abs((way[enemies[i].getPositionIndex()].x-super.position.x)*(way[enemies[i].getPositionIndex()].x-super.position.x) + (way[enemies[i].getPositionIndex()].y-super.position.y)*(way[enemies[i].getPositionIndex()].y-super.position.y))) ;
       if (super.range > eRange) {
         enemies[i].hp -= super.damage;
         break;
