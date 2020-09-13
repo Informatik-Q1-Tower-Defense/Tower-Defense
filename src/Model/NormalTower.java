@@ -6,12 +6,13 @@ public class NormalTower extends Tower {
   
   private int freezePoints;
   
-  public FreezeTower(Position pos){
+  public NormalTower(Position pos){
 
     super(pos);
     
     super.pictureSource = "/pics/normalTower.png";
-    super.cost = 200;
+    super.image = new Image(pictureSource);
+    super.cost = 150;
     
     this.freezePoints = 10;
   }

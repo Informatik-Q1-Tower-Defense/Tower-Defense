@@ -11,7 +11,8 @@ public class FreezeTower extends Tower {
     super(pos);
     
     super.pictureSource = "/pics/freezeTower.png";
-    super.cost = 150;
+    super.image = new Image(pictureSource);
+    super.cost = 200;
     
     this.freezePoints = 10;
   }

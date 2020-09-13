@@ -1,7 +1,10 @@
 package Model;
 
+import javafx.scene.image.Image;
+
 public abstract class Tower {
 
+    protected Image image;
     protected String pictureSource;
     protected Position position;
     
@@ -15,9 +18,12 @@ public abstract class Tower {
         this.position = pos;
 
         this.damage = 20;
-        this.cost = 100;
         this.range = 3;
         this.bulletspeed = 5; //Schüsse pro Sekunde
+    }
+
+    public Image getImage(){
+        return this.image;
     }
 
     public int getCost(){
