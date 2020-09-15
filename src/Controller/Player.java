@@ -16,10 +16,11 @@ public class Player {
 
         tower = new FreezeTower(pos);
         this.money -=  tower.getCost();
+        
         if ( this.money < 0) {
             this.money += tower.getCost();
+            tower = null;
         }
-        tower = null;
     }
 
 }
