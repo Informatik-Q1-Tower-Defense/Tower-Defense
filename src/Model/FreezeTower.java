@@ -1,4 +1,5 @@
 package Model;
+import java.util.LinkedList;
 
 import Controller.ViewController;
 
@@ -18,15 +19,15 @@ public class FreezeTower extends Tower {
   }
   
   public void shoot(Wave wave){
-    Enemy[] enemies = wave.enemies;
+    LinkedList<Enemy> enemies = wave.enemyList;
 
     Position[] way = ViewController.mapData.way;
 
-    for (int i = 0; i < enemies.length; i++) {
-      double eRange = Math.sqrt(Math.abs((way[enemies[i].getPositionIndex()].x-super.position.x)*(way[enemies[i].getPositionIndex()].x-super.position.x) + (way[enemies[i].getPositionIndex()].y-super.position.y)*(way[enemies[i].getPositionIndex()].y-super.position.y))) ;
+    for (int i = 0; i < enemies.size(); i++) {
+      double eRange = Math.sqrt(Math.abs((way[enemies.get(i).getPositionIndex()].x-super.position.x)*(way[enemies.get(i).getPositionIndex()].x-super.position.x) + (way[enemies.get(i).getPositionIndex()].y-super.position.y)*(way[enemies.get(i).getPositionIndex()].y-super.position.y))) ;
       if (super.range > eRange) {
-        enemies[i].hp -= super.damage;
-        enemies[i].freeze(freezePoints);
+        enemies.get(i).hp -= super.damage;
+        enemies.get(i).freeze(freezePoints);
         break;
       } // end of if
     }
