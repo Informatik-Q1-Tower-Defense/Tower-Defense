@@ -18,7 +18,7 @@ public class ViewController extends Application {
 
         //view-Object erstellen (Ausgangspunkt des gesamten Programms)
 
-        ViewController.mapData = new Map("levels/level_04.txt");
+        ViewController.mapData = new Map("levels/level_05.txt");
 
         this.view = new MapView(0, 0, ViewController.mapData);
 
