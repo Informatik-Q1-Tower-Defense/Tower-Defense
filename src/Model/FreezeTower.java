@@ -1,6 +1,6 @@
 package Model;
 import java.util.LinkedList;
-
+import javafx.scene.image.Image;
 import Controller.ViewController;
 
 public class FreezeTower extends Tower {
@@ -11,7 +11,7 @@ public class FreezeTower extends Tower {
 
     super(pos);
     
-    super.pictureSource = "/pics/freezeTower.png";
+    super.pictureSource = "file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/freezeTower.png"; //Der Image-Konstruktor erwartet eine URL nicht den Pfad
     super.image = new Image(pictureSource);
     super.cost = 200;
     

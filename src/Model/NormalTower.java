@@ -2,6 +2,7 @@ package Model;
 
 import Controller.ViewController;
 import java.util.LinkedList;
+import javafx.scene.image.Image;
 
 public class NormalTower extends Tower {
   
@@ -11,7 +12,7 @@ public class NormalTower extends Tower {
 
     super(pos);
     
-    super.pictureSource = "/pics/normalTower.png";
+    super.pictureSource = "file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/normalTower.png"; //Der Image-Konstruktor erwartet eine URL nicht den Pfad
     super.image = new Image(pictureSource);
     super.cost = 150;
     

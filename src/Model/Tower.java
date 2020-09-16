@@ -31,7 +31,7 @@ public abstract class Tower {
     }
     
     public Position getPosition(){
-        return position
+        return position;
     }
 
     public abstract void shoot(Wave wave); 

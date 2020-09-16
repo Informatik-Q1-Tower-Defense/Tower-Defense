@@ -13,7 +13,6 @@ public class MapView extends View {
 
     private Image border = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Border.png");
     private Image grass = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Grass.png");
-    private Image tower = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Tower.png");
     private Image way = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Way.png");
     private Image tree = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Tree.png");
 
@@ -58,7 +57,7 @@ public class MapView extends View {
 
         for(Tower tower: mapData.towers) {
 
-            this.map[tower.getPosition().x][tower.getPosition().y].setImage(this.tower);
+            this.map[tower.getPosition().x][tower.getPosition().y].setImage(tower.getImage());
         }
     }
 
@@ -66,7 +65,7 @@ public class MapView extends View {
 
         for(Tower tower: mapData.towers) {
 
-            this.map[tower.getPosition().x][tower.getPosition().y].setImage(this.tower);
+            this.map[tower.getPosition().x][tower.getPosition().y].setImage(tower.getImage());
         }
     }
 
