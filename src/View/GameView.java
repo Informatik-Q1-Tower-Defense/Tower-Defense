@@ -14,8 +14,8 @@ public class GameView extends View {
 
         super(0,0);
         map = new MapView(0,0,mapData);
-        library = new LibraryView(map.getWidth(), 0, map.getHeight()/50);
-        super.setBounds(map.getWidth() + 10 + library.getWidth(), map.getHeight());
+        library = new LibraryView(map.getWidth(), 0, map.getHeight()/60);
+        super.setBounds(map.getWidth() + library.getWidth(), map.getHeight());
         super.setCenter(x,y);
     }
 

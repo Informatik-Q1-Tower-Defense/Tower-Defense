@@ -14,7 +14,7 @@ public class LibraryView extends View {
 
     public LibraryView(int x, int y, int rows) {
 
-        super(100, rows * 50);
+        super(120, rows * 60);
         super.setCenter(x, y);
 
         this.rows = rows;
@@ -43,10 +43,10 @@ public class LibraryView extends View {
 
                 ImageView imageView = new ImageView();
                 imageView.setImage(img);
-                imageView.setFitHeight(50);
-                imageView.setFitWidth(50);
-                imageView.setLayoutX(column * 50);
-                imageView.setLayoutY(row * 50);
+                imageView.setFitHeight(60);
+                imageView.setFitWidth(60);
+                imageView.setLayoutX(column * 60);
+                imageView.setLayoutY(row * 60);
 
                 nodes.add(imageView);
             }
