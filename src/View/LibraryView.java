@@ -12,7 +12,7 @@ public class LibraryView extends View {
 
     public LibraryView(int x, int y, int rows) {
 
-        super(60, rows * 30);
+        super(100, rows * 50);
         super.setCenter(x, y);
 
         this.rows = rows;
@@ -32,7 +32,7 @@ public class LibraryView extends View {
 
                 try {
 
-                    img = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/" + towers[row * columns + column]);
+                    img = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/" + towers[row * columns + column] + ".png");
                 }
                 catch(IndexOutOfBoundsException e) {
 
@@ -41,8 +41,10 @@ public class LibraryView extends View {
 
                 ImageView imageView = new ImageView();
                 imageView.setImage(img);
-                imageView.setLayoutX(column * 30);
-                imageView.setLayoutY(row * 30);
+                imageView.setFitHeight(50);
+                imageView.setFitWidth(50);
+                imageView.setLayoutX(column * 50);
+                imageView.setLayoutY(row * 50);
 
                 nodes.add(imageView);
             }
