@@ -3,11 +3,13 @@ package View;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+
 import java.util.ArrayList;
 
 public class LibraryView extends View {
 
-    private String[] towers = {"freezeTower", "normalTower"};
+    private String[] towers = {"normalTower", "freezeTower"};
     private int rows, columns;
 
     public LibraryView(int x, int y, int rows) {
@@ -56,6 +58,11 @@ public class LibraryView extends View {
 
     @Override
     public void update() {
+
+    }
+
+    private void handleOnDragDetected(MouseEvent evt) {
+
 
     }
 }
