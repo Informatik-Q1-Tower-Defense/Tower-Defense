@@ -3,18 +3,20 @@ package View;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import java.util.ArrayList;
 
 public class LibraryView extends View {
 
-    private Image tower = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Tower.png");
+    private String[] towers = {"freezeTower", "normalTower"};
+    private int rows, columns;
 
-    public LibraryView(int x, int y, int height) {
+    public LibraryView(int x, int y, int rows) {
 
-        super(60, height);
+        super(60, rows * 30);
         super.setCenter(x, y);
+
+        this.rows = rows;
+        this.columns = 2;
     }
 
     @Override
@@ -22,36 +24,27 @@ public class LibraryView extends View {
 
         ArrayList<Node> nodes = new ArrayList<Node>();
 
-        boolean condition = true;
+        for(int row = 0; row < rows; row++) {
 
-        for(int y = 0; y < super.getHeight(); y++) {
+            for (int column = 0; column < columns; column++) {
 
-            for(int x = 0; x < super.getWidth(); x++) {
+                Image img;
 
-                if(condition) {
+                try {
 
-                    Rectangle rect = new Rectangle();
-                    rect.setFill(Color.DARKGREY);
-                    rect.setWidth(30);
-                    rect.setHeight(30);
-                    rect.setLayoutX(x * 30);
-                    rect.setLayoutY(y * 30);
-                    nodes.add(rect);
-
-                    condition = false;
+                    img = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/" + towers[row * columns + column]);
                 }
-                else {
+                catch(IndexOutOfBoundsException e) {
 
-                    Rectangle rect = new Rectangle();
-                    rect.setFill(Color.LIGHTGRAY);
-                    rect.setWidth(30);
-                    rect.setHeight(30);
-                    rect.setLayoutX(x * 30);
-                    rect.setLayoutY(y * 30);
-                    nodes.add(rect);
-
-                    condition = true;
+                    img = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Border.png");
                 }
+
+                ImageView imageView = new ImageView();
+                imageView.setImage(img);
+                imageView.setLayoutX(column * 30);
+                imageView.setLayoutY(row * 30);
+
+                nodes.add(imageView);
             }
         }
 

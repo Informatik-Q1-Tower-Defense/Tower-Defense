@@ -20,7 +20,7 @@ public class ViewController extends Application {
 
         ViewController.mapData = new Map("levels/level_05.txt");
 
-        this.view = new MapView(0, 0, ViewController.mapData);
+        this.view = new LibraryView(0, 0,5);
 
         Pane root = new Pane();
         Scene scene = new Scene(root, this.view.getWidth(), this.view.getHeight());
