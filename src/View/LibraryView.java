@@ -72,6 +72,7 @@ public class LibraryView extends View {
 
         ClipboardContent cb = new ClipboardContent();
         cb.putImage(element.getImage());
+        cb.putString(element.getImage().getUrl().substring(54));
 
         db.setContent(cb);
         evt.consume();;

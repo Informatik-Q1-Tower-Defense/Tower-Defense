@@ -36,7 +36,10 @@ public class MapView extends View {
                 this.map[xValue][yValue].setLayoutX(xValue * 30);
                 this.map[xValue][yValue].setLayoutY(yValue * 30);
                 this.map[xValue][yValue].setOnDragOver((evt) -> handleDragOver(evt));
-                this.map[xValue][yValue].setOnDragDropped((evt) -> handleOnDragDropped(evt));
+
+                Position pos = new Position(xValue, yValue);
+
+                this.map[xValue][yValue].setOnDragDropped((evt) -> handleOnDragDropped(evt, pos));
             }
         }
 
@@ -92,14 +95,29 @@ public class MapView extends View {
 
     private void handleDragOver(DragEvent evt) {
 
-        if (evt.getDragboard().hasImage()) {
+        if (evt.getDragboard().hasString()) {
 
             evt.acceptTransferModes(TransferMode.ANY);
         }
     }
 
-    private void handleOnDragDropped(DragEvent evt) {
+    private void handleOnDragDropped(DragEvent evt, Position pos) {
 
-        Image img = evt.getDragboard().getImage();
+        switch (evt.getDragboard().getString()) {
+
+            case "normalTower.png":
+
+                Tower normalTower = new NormalTower(pos);
+                mapData.addTower(normalTower);
+                update();
+                break;
+
+            case "freezeTower.png":
+
+                Tower freezeTower = new FreezeTower(pos);
+                mapData.addTower(freezeTower);
+                update();
+                break;
+        }
     }
 }
