@@ -13,6 +13,7 @@ public class ViewController extends Application {
     private View view;
 
     public static Map mapData;
+    public static Player player = new Player(100, 1000);
 
     public void start(Stage primaryStage) {
 

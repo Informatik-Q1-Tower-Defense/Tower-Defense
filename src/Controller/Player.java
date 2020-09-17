@@ -23,4 +23,31 @@ public class Player {
         }
     }
 
+    public FreezeTower buyFreezeTower(Position pos) {
+
+        FreezeTower tower = new FreezeTower(pos);
+
+        this.money -=  tower.getCost();
+
+        if (this.money < 0) {
+            this.money += tower.getCost();
+            tower = null;
+        }
+
+        return tower;
+    }
+
+    public NormalTower buyTower(Position pos) {
+
+        NormalTower tower = new NormalTower(pos);
+
+        this.money -=  tower.getCost();
+
+        if (this.money < 0) {
+            this.money += tower.getCost();
+            tower = null;
+        }
+
+        return tower;
+    }
 }
