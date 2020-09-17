@@ -4,6 +4,9 @@ import javafx.scene.Node;
 import Model.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.TransferMode;
+
 import java.util.ArrayList;
 
 public class MapView extends View {
@@ -32,6 +35,8 @@ public class MapView extends View {
                 this.map[xValue][yValue] = new ImageView(this.border);
                 this.map[xValue][yValue].setLayoutX(xValue * 30);
                 this.map[xValue][yValue].setLayoutY(yValue * 30);
+                this.map[xValue][yValue].setOnDragOver((evt) -> handleDragOver(evt));
+                this.map[xValue][yValue].setOnDragDropped((evt) -> handleOnDragDropped(evt));
             }
         }
 
@@ -83,5 +88,18 @@ public class MapView extends View {
 
         Node[] nodesArray = new Node[nodes.size()];
         return nodes.toArray(nodesArray);
+    }
+
+    private void handleDragOver(DragEvent evt) {
+
+        if (evt.getDragboard().hasImage()) {
+
+            evt.acceptTransferModes(TransferMode.ANY);
+        }
+    }
+
+    private void handleOnDragDropped(DragEvent evt) {
+
+        Image img = evt.getDragboard().getImage();
     }
 }

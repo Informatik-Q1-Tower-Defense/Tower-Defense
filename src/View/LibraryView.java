@@ -3,7 +3,10 @@ package View;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 
 import java.util.ArrayList;
 
@@ -48,6 +51,8 @@ public class LibraryView extends View {
                 imageView.setLayoutX(column * 60);
                 imageView.setLayoutY(row * 60);
 
+                imageView.setOnDragDetected((evt) -> handleOnDragDetected(evt, imageView));
+
                 nodes.add(imageView);
             }
         }
@@ -61,8 +66,14 @@ public class LibraryView extends View {
 
     }
 
-    private void handleOnDragDetected(MouseEvent evt) {
+    private void handleOnDragDetected(MouseEvent evt, ImageView element) {
 
+        Dragboard db = element.startDragAndDrop(TransferMode.ANY);
 
+        ClipboardContent cb = new ClipboardContent();
+        cb.putImage(element.getImage());
+
+        db.setContent(cb);
+        evt.consume();;
     }
 }

@@ -55,7 +55,7 @@ public class Map {
 					position.x = currentPosition.x;
 					position.y = currentPosition.y;
 
-					towers.add(new FreezeTower(position));
+					towers.add(new NormalTower(position));
 				}
 				else if (contentCA[i] == '_') {
 
