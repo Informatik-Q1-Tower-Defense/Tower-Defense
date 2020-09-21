@@ -12,16 +12,17 @@ public class ViewController extends Application {
 
     private View view;
 
-    public static Map mapData;
-    public static Player player = new Player(100, 1000);
-
     public void start(Stage primaryStage) {
 
         //view-Object erstellen (Ausgangspunkt des gesamten Programms)
 
-        ViewController.mapData = new Map("levels/level_05.txt");
+        Player.setMap(new Map("levels/level_05.txt"));
+        Player.setMoney(1000);
+        Player.setHp(1000);
 
-        this.view = new GameView(0, 0, ViewController.mapData);
+        //KonfigurationsTeil
+
+        this.view = new GameView(0, 0, Player.getMap());
 
         Pane root = new Pane();
         Scene scene = new Scene(root, this.view.getWidth(), this.view.getHeight());

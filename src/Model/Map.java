@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Map {
@@ -14,6 +15,8 @@ public class Map {
 	public Position[] avaidablePositions;
 	public Position[] way;
 	public Tower[] towers;
+
+	private HashMap<Position, Effect> specialArea;
 
 	public Map(String filePath) {
 		
@@ -148,6 +151,30 @@ public class Map {
 
 				this.towers = towers.toArray(newTowers);
 
+				break;
+			}
+		}
+	}
+
+	public Effect getEffectOn(Position position) {
+
+		Effect effect = specialArea.get(position);
+
+		if (effect == null) {
+
+			return Effect.NONE;
+		}
+
+		return effect;
+	}
+
+	public void addEffectOn(Effect effect, Position position) {
+
+		for(Position wayElement: way) {
+
+			if (position.x == wayElement.x && position.y == wayElement.y) {
+
+				specialArea.put(position, effect);
 				break;
 			}
 		}

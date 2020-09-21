@@ -4,15 +4,11 @@ import Model.*;
 
 public class Player {
 
-    public int money;
-    public int hp;
+    private static int money;
+    private static int hp;
+    private static Map map;
 
-    public Player(int hpTemp, int moneyTemp){
-        this.money = moneyTemp;
-        this.hp = hpTemp;
-    }
-
-    public void buy(Tower tower, Position pos){
+    /*public void buy(Tower tower, Position pos){
 
         tower = new FreezeTower(pos);
         this.money -=  tower.getCost();
@@ -21,30 +17,72 @@ public class Player {
             this.money += tower.getCost();
             tower = null;
         }
+    }*/
+
+    public static int getMoney() {
+
+        return money;
     }
 
-    public FreezeTower buyFreezeTower(Position pos) {
+    protected static void setMoney(int newValue) {
+
+        money = newValue;
+    }
+
+    public static int getHp() {
+
+        return hp;
+    }
+
+    protected static void setHp(int newValue) {
+
+        hp = newValue;
+    }
+
+    public static Map getMap() {
+
+        return map;
+    }
+
+    protected static void setMap(Map newValue) {
+
+        map = newValue;
+    }
+
+    public static void enemyReachedEnd(Enemy enemy) {
+
+        hp -= enemy.getDamage();
+    }
+
+    public static void enemygetKilled(Enemy enemy) {
+
+        money += enemy.getWin();
+    }
+
+    public static FreezeTower buyFreezeTower(Position pos) {
 
         FreezeTower tower = new FreezeTower(pos);
 
-        this.money -=  tower.getCost();
+        money -=  tower.getCost();
 
-        if (this.money < 0) {
-            this.money += tower.getCost();
+        if (money < 0) {
+
+            money += tower.getCost();
             tower = null;
         }
 
         return tower;
     }
 
-    public NormalTower buyTower(Position pos) {
+    public static NormalTower buyTower(Position pos) {
 
         NormalTower tower = new NormalTower(pos);
 
-        this.money -=  tower.getCost();
+        money -=  tower.getCost();
 
-        if (this.money < 0) {
-            this.money += tower.getCost();
+        if (money < 0) {
+
+            money += tower.getCost();
             tower = null;
         }
 

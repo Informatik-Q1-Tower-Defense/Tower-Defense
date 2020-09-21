@@ -1,5 +1,6 @@
 package View;
 
+import Controller.Player;
 import Controller.ViewController;
 import javafx.scene.Node;
 import Model.*;
@@ -108,7 +109,7 @@ public class MapView extends View {
 
             case "normalTower.png":
 
-                Tower normalTower = ViewController.player.buyTower(pos);
+                Tower normalTower = Player.buyTower(pos);
 
                 if (normalTower != null) {
 
@@ -119,7 +120,7 @@ public class MapView extends View {
 
             case "freezeTower.png":
 
-                Tower freezeTower = ViewController.player.buyFreezeTower(pos);
+                Tower freezeTower = Player.buyFreezeTower(pos);
 
                 if (freezeTower != null) {
 

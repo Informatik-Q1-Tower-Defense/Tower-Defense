@@ -6,7 +6,7 @@ public class Enemy {
     public int hp, speed;
     private int damage;
     private String imageSource = "";
-    public double win;
+    private int win;
     
     private int currentPositionIndex;
     
@@ -17,6 +17,16 @@ public class Enemy {
         this.damage = damage;
         this.speed = speed;
         this.win = win;
+    }
+
+    public int getDamage() {
+
+        return damage;
+    }
+
+    public int getWin() {
+
+        return win;
     }
     
     public int getPositionIndex() {
@@ -34,16 +44,14 @@ public class Enemy {
         this.currentPositionIndex++;
     }
     
-    public void onDamage(Player player) {
-        
-        if(hp <= 0) {
-            player.money += win;
-        }
-        
+    public void onDamage() {
+
+        Player.enemygetKilled(this);
     }
     
     public void onReachEnd(Player player) {
-        player.hp -= damage;
+
+        Player.enemyReachedEnd(this);
     }
     
 }
