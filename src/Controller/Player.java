@@ -8,6 +8,8 @@ public class Player {
     private static int hp;
     private static Map map;
 
+    private static Action onGameOver;
+
     /*public void buy(Tower tower, Position pos){
 
         tower = new FreezeTower(pos);
@@ -49,9 +51,19 @@ public class Player {
         map = newValue;
     }
 
+    protected void setOnGameOver(Action action) {
+
+        onGameOver = action;
+    }
+
     public static void enemyReachedEnd(Enemy enemy) {
 
         hp -= enemy.getDamage();
+
+        if(hp <= 0) {
+
+            onGameOver.action();
+        }
     }
 
     public static void enemygetKilled(Enemy enemy) {
