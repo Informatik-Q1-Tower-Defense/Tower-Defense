@@ -1,8 +1,20 @@
 package Model;
 
-public enum Effect {
+public class Effect {
 
-    FREEZED,
-    NORMALTOWERRANGE,
-    NONE
+    enum Type {
+
+        FREEZED,
+        NORMALTOWERRANGE,
+        NONE
+    }
+
+    public Type type;
+    public Tower tower;
+
+    public Effect(Type type, Tower tower) {
+
+        this.type = type;
+        this.tower = tower;
+    }
 }

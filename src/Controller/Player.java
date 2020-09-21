@@ -51,7 +51,7 @@ public class Player {
         map = newValue;
     }
 
-    protected void setOnGameOver(Action action) {
+    protected static void setOnGameOver(Action action) {
 
         onGameOver = action;
     }

@@ -10,6 +10,20 @@ public class Position {
         this.y = y;
     }
 
+    public boolean equals(Object obj) {
+
+        Position position = (Position) obj;
+
+        if(position.x == this.x && position.y == this.y) {
+
+            return true;
+        }
+        else {
+
+            return false;
+        }
+    }
+
     public static Position[] sortWay(Position start, Position[] way) {
 
         if (start == null || way.length == 0) {

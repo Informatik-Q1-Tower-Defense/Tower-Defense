@@ -12,9 +12,9 @@ public class Map {
 
 	public int width, height;
 	
-	public Position[] avaidablePositions;
+	public ArrayList<Position> avaidablePositions;
 	public Position[] way;
-	public Tower[] towers;
+	public ArrayList<Tower> towers;
 
 	private HashMap<Position, Effect> specialArea;
 
@@ -41,8 +41,8 @@ public class Map {
 		char[] contentCA = content.toCharArray();
 
 		ArrayList<Position> way = new ArrayList<Position>();
-		ArrayList<Position> avaidablePositions = new ArrayList<Position>();
-		ArrayList<Tower> towers = new ArrayList<Tower>();
+		avaidablePositions = new ArrayList<Position>();
+		towers = new ArrayList<Tower>();
 		
 		Position currentPosition = new Position(0, 0);
 
@@ -97,63 +97,30 @@ public class Map {
 		}
 
 		Position[] unsortedWay = new Position[way.size()];
-		Tower[] towersRaw = new Tower[towers.size()];
-		Position[] avaidablePositionsRaw = new Position[avaidablePositions.size()];
 
 		this.way = Position.sortWay(startOfWay, way.toArray(unsortedWay));
-		this.towers = towers.toArray(towersRaw);
-		this.avaidablePositions = avaidablePositions.toArray(avaidablePositionsRaw);
 
 		this.height = currentPosition.y;
 	}
 
 	public void addTower(Tower tower) {
 
-		for(Position element: this.avaidablePositions) {
+		if (avaidablePositions.contains(tower.position)) {
 
-			if (tower.getPosition().x == element.x && tower.getPosition().y == element.y) {
-
-				ArrayList<Tower> towers = new ArrayList<Tower>();
-
-				for(Tower towersElement: this.towers) {
-
-					towers.add(towersElement);
-				}
-
-				towers.add(tower);
-
-				Tower[] newTowers = new Tower[towers.size()];
-
-				this.towers = towers.toArray(newTowers);
-
-				break;
-			}
+			avaidablePositions.remove(tower.position);
+			towers.add(tower);
 		}
 	}
 
 	public void removeTowerAt(Position position) {
 
-		for(int i = 0; i < this.towers.length; i++) {
+		towers.forEach((tower) -> {
 
-			if (this.towers[i].getPosition().x == position.x && this.towers[i].getPosition().y == position.y) {
+			if (tower.position.equals(position)) {
 
-				ArrayList<Tower> towers = new ArrayList<Tower>();
-
-				for(int index = 0; index < this.towers.length; index ++) {
-
-					if (index != i) {
-
-						towers.add(this.towers[index]);
-					}
-				}
-
-				Tower[] newTowers = new Tower[towers.size()];
-
-				this.towers = towers.toArray(newTowers);
-
-				break;
+				towers.remove(tower);
 			}
-		}
+		});
 	}
 
 	public Effect getEffectOn(Position position) {
@@ -162,7 +129,7 @@ public class Map {
 
 		if (effect == null) {
 
-			return Effect.NONE;
+			return new Effect(Effect.Type.NONE, null);
 		}
 
 		return effect;
@@ -172,7 +139,7 @@ public class Map {
 
 		for(Position wayElement: way) {
 
-			if (position.x == wayElement.x && position.y == wayElement.y) {
+			if (position.equals(wayElement)) {
 
 				specialArea.put(position, effect);
 				break;

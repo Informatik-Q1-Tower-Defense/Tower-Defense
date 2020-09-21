@@ -19,6 +19,7 @@ public class ViewController extends Application {
         Player.setMap(new Map("levels/level_05.txt"));
         Player.setMoney(1000);
         Player.setHp(1000);
+        Player.setOnGameOver(() -> {System.out.println("Game Over");});
 
         //KonfigurationsTeil
 

@@ -22,6 +22,20 @@ public abstract class Tower {
         this.bulletspeed = 5; //Schüsse pro Sekunde
     }
 
+    public boolean equals(Object obj) {
+
+        Tower tower = (Tower) obj;
+
+        if (tower.position.equals(this.position)) {
+
+            return true;
+        }
+        else {
+
+            return false;
+        }
+    }
+
     public Image getImage(){
         return this.image;
     }
