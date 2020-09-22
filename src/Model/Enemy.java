@@ -49,7 +49,7 @@ public class Enemy {
         Player.enemygetKilled(this);
     }
     
-    public void onReachEnd(Player player) {
+    public void onReachEnd() {
 
         Player.enemyReachedEnd(this);
     }
