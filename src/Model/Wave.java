@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class Wave {
    
-    LinkedList<Enemy> enemyList; // Import fehlte
+    LinkedList<Enemy> enemyList;
     
     public Wave(int amount) {
         
@@ -12,5 +12,10 @@ public class Wave {
             
             enemyList.add(new Enemy(5, 50, 1, 25));
         }
+    }
+    
+    public void move() {
+       
+       enemyList.forEach((enemy) -> {enemy.move();});
     }
 }
