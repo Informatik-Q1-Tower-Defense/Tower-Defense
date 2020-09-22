@@ -22,63 +22,56 @@ public class Player {
     }*/
 
     public static int getMoney() {
-
         return money;
     }
 
     protected static void setMoney(int newValue) {
-
         money = newValue;
     }
 
     public static int getHp() {
-
         return hp;
     }
 
     protected static void setHp(int newValue) {
-
         hp = newValue;
     }
 
     public static Map getMap() {
-
         return map;
     }
 
     protected static void setMap(Map newValue) {
-
         map = newValue;
     }
 
     protected static void setOnGameOver(Action action) {
-
         onGameOver = action;
     }
 
-    public static void enemyReachedEnd(Enemy enemy) {
-
+    public static void enemyReachedEnd(Enemy enemy, Wave wave) {
         hp -= enemy.getDamage();
 
         if(hp <= 0) {
-
             onGameOver.action();
+        }
+        else{
+            wave.enemyList.remove(enemy);
         }
     }
 
     public static void enemygetKilled(Enemy enemy) {
 
         money += enemy.getWin();
+        wave.enemyList.remove(enemy);
     }
 
     public static FreezeTower buyFreezeTower(Position pos) {
 
         FreezeTower tower = new FreezeTower(pos);
-
         money -=  tower.getCost();
 
         if (money < 0) {
-
             money += tower.getCost();
             tower = null;
         }
@@ -89,11 +82,9 @@ public class Player {
     public static NormalTower buyTower(Position pos) {
 
         NormalTower tower = new NormalTower(pos);
-
         money -=  tower.getCost();
 
         if (money < 0) {
-
             money += tower.getCost();
             tower = null;
         }
