@@ -8,6 +8,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
+import java.util.LinkedList;
+
 public class ViewController extends Application {
 
     private View view;
@@ -19,7 +21,7 @@ public class ViewController extends Application {
         Player.setMap(new Map("levels/level_05.txt"));
         Player.setMoney(1000);
         Player.setHp(1000);
-        Player.setOnGameOver(() -> {System.out.println("Game Over");});
+        Player.setOnGameOver(() -> GameController.stop());
 
         //KonfigurationsTeil
 
