@@ -49,14 +49,14 @@ public class Player {
         onGameOver = action;
     }
 
-    public static void enemyReachedEnd(Enemy enemy, Wave wave) {
+    public static void enemyReachedEnd(Enemy enemy) {
         hp -= enemy.getDamage();
 
         if(hp <= 0) {
             onGameOver.action();
         }
         else{
-            wave.enemyList.remove(enemy);
+           wave.enemyList.remove(enemy);
         }
     }
 

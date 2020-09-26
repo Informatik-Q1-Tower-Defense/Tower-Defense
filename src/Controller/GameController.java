@@ -1,4 +1,6 @@
-protected class GameController {
+package Controller;
+
+public class GameController {
 
 
 }

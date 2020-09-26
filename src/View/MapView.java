@@ -19,6 +19,8 @@ public class MapView extends View {
     private Image border = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/border3.png");
     private Image grass = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Grass.png");
     private Image way = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Way.png");
+    private Image spawn = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Portal.png");
+    private Image end = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Ziel.png");
     private Image tree = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Tree.png");
 
     public MapView(int x, int y, Map mapData) {
@@ -64,6 +66,9 @@ public class MapView extends View {
 
             this.map[element.x][element.y].setImage(this.way);
         }
+
+        this.map[mapData.way[0].x][mapData.way[0].y].setImage(this.spawn);
+        this.map[mapData.way[mapData.way.length - 1].x][mapData.way[mapData.way.length - 1].y].setImage(this.end);
 
         for(Tower tower: mapData.towers) {
 
