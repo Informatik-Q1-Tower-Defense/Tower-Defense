@@ -1,9 +1,9 @@
 package Model;
 import javafx.scene.image.Image;
 
-public static class Images {
+public class Images {
 
-    private String beginning = "file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/";
+    private static final String beginning = "file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/";
 
     public static final Image FREEZETOWER = new Image( beginning + "FreezeTower.png");
     public static final Image NORMALTOWER = new Image( beginning + "NormalTower.png");
