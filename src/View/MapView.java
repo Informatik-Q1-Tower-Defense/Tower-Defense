@@ -16,7 +16,7 @@ public class MapView extends View {
     private ImageView[][] map;
     public Map mapData;
 
-    private Image border = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/border3.png");
+    private Image border = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/border.png");
     private Image grass = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Grass.png");
     private Image way = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Way.png");
     private Image spawn = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Portal.png");

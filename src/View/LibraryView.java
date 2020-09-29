@@ -41,7 +41,7 @@ public class LibraryView extends View {
                 }
                 catch(IndexOutOfBoundsException e) {
 
-                    img = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Border.png");
+                    img = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/placeholder.png");
                 }
 
                 ImageView imageView = new ImageView();

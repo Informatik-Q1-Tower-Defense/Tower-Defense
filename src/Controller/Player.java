@@ -56,14 +56,14 @@ public class Player {
             onGameOver.action();
         }
         else{
-           wave.enemyList.remove(enemy);
+           //wave.enemyList.remove(enemy);
         }
     }
 
     public static void enemygetKilled(Enemy enemy) {
 
         money += enemy.getWin();
-        wave.enemyList.remove(enemy);
+        //wave.enemyList.remove(enemy);
     }
 
     public static FreezeTower buyFreezeTower(Position pos) {
