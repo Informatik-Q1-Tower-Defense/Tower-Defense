@@ -20,7 +20,7 @@ public class MapView extends View {
     private Image grass = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Grass.png");
     private Image way = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Way.png");
     private Image spawn = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Portal.png");
-    private Image end = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Ziel.png");
+    private Image end = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Target.png");
     private Image tree = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Tree.png");
 
     public MapView(int x, int y, Map mapData) {
