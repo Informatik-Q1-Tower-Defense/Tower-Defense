@@ -5,7 +5,6 @@ import javafx.scene.image.Image;
 public abstract class Tower {
 
     protected Image image;
-    protected String pictureSource;
     protected Position position;
     
     protected int damage;

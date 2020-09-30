@@ -16,13 +16,6 @@ public class MapView extends View {
     private ImageView[][] map;
     public Map mapData;
 
-    private Image border = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/border.png");
-    private Image grass = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Grass.png");
-    private Image way = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Way.png");
-    private Image spawn = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Portal.png");
-    private Image end = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Target.png");
-    private Image tree = new Image("file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/Tree.png");
-
     public MapView(int x, int y, Map mapData) {
 
         super(mapData.width * 30, mapData.height * 30);
@@ -36,7 +29,7 @@ public class MapView extends View {
 
             for(int yValue = 0; yValue < mapData.height; yValue++) {
 
-                this.map[xValue][yValue] = new ImageView(this.border);
+                this.map[xValue][yValue] = new ImageView(Images.BORDER);
                 this.map[xValue][yValue].setLayoutX(xValue * 30);
                 this.map[xValue][yValue].setLayoutY(yValue * 30);
                 this.map[xValue][yValue].setOnDragOver((evt) -> handleDragOver(evt));
@@ -55,20 +48,20 @@ public class MapView extends View {
 
             if (randomNumber < 0.667) {
 
-                this.map[element.x][element.y].setImage(this.grass);
+                this.map[element.x][element.y].setImage(Images.GRASS);
             }
             else {
 
-                this.map[element.x][element.y].setImage(this.tree);
+                this.map[element.x][element.y].setImage(Images.TREE);
             }
         }
         for(Position element: mapData.way) {
 
-            this.map[element.x][element.y].setImage(this.way);
+            this.map[element.x][element.y].setImage(Images.WAY);
         }
 
-        this.map[mapData.way[0].x][mapData.way[0].y].setImage(this.spawn);
-        this.map[mapData.way[mapData.way.length - 1].x][mapData.way[mapData.way.length - 1].y].setImage(this.end);
+        this.map[mapData.way[0].x][mapData.way[0].y].setImage(Images.PORTAL);
+        this.map[mapData.way[mapData.way.length - 1].x][mapData.way[mapData.way.length - 1].y].setImage(Images.TARGET);
 
         for(Tower tower: mapData.towers) {
 

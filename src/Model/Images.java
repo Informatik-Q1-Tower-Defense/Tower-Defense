@@ -9,6 +9,7 @@ public class Images {
     public static final Image NORMALTOWER = new Image( beginning + "NormalTower.png");
     public static final Image ENEMY = new Image( beginning + "Enemy.png");
     public static final Image WAY = new Image( beginning + "Way.png");
+    public static final Image GRASS = new Image(beginning + "Grass.png");
     public static final Image TREE = new Image( beginning + "Tree.png");
     public static final Image BORDER = new Image( beginning + "border.png");
     public static final Image PLACEHOLDER = new Image( beginning + "placeholder.png");

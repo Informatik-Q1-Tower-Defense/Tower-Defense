@@ -12,9 +12,8 @@ public class FreezeTower extends Tower {
   public FreezeTower(Position pos){
 
     super(pos);
-    
-    super.pictureSource = "file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/FreezeTower.png"; //Der Image-Konstruktor erwartet eine URL nicht den Pfad
-    super.image = new Image(pictureSource);
+
+    super.image = Images.FREEZETOWER;
     super.cost = 200;
     
     this.freezePoints = 10;

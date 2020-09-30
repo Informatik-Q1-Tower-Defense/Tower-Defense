@@ -13,8 +13,7 @@ public class NormalTower extends Tower {
 
     super(pos);
     
-    super.pictureSource = "file:/Users/timjaeger/IdeaProjects/Tower-Defense/pics/normalTower.png"; //Der Image-Konstruktor erwartet eine URL nicht den Pfad
-    super.image = new Image(pictureSource);
+    super.image = Images.NORMALTOWER;
     super.cost = 150;
     
     this.freezePoints = 10;
