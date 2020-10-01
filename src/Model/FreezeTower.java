@@ -1,9 +1,6 @@
 package Model;
 import java.util.LinkedList;
-
 import Controller.Player;
-import javafx.scene.image.Image;
-import Controller.ViewController;
 
 public class FreezeTower extends Tower {
   

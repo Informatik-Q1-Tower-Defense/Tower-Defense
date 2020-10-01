@@ -1,9 +1,7 @@
 package Model;
 
 import Controller.Player;
-import Controller.ViewController;
 import java.util.LinkedList;
-import javafx.scene.image.Image;
 
 public class NormalTower extends Tower {
   

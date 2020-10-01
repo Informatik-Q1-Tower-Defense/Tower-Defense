@@ -1,10 +1,8 @@
 package View;
 
 import Controller.Player;
-import Controller.ViewController;
 import javafx.scene.Node;
 import Model.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
@@ -15,6 +13,7 @@ public class MapView extends View {
 
     private ImageView[][] map;
     public Map mapData;
+    private Wave wave;
 
     public MapView(int x, int y, Map mapData) {
 
@@ -69,11 +68,53 @@ public class MapView extends View {
         }
     }
 
+    public void addWave(Wave wave) {
+
+        this.wave = wave;
+
+        for(Enemy enemy: wave.enemyList) {
+
+            Position pos = mapData.way[enemy.getPositionIndex()];
+
+            if(enemy.getPositionIndex() == 0) {
+
+                map[pos.x][pos.y].setImage(Images.PORTALENEMY);
+            }
+            else if(enemy.getPositionIndex() == mapData.way.length - 1) {
+
+                map[pos.x][pos.y].setImage(Images.TARGETENEMY);
+            }
+            else {
+
+                map[pos.x][pos.y].setImage(Images.WAYENEMY);
+            }
+        }
+    }
+
     public void update() {
 
         for(Tower tower: mapData.towers) {
 
             this.map[tower.getPosition().x][tower.getPosition().y].setImage(tower.getImage());
+        }
+
+        for(Enemy enemy: wave.enemyList) {
+
+            if (enemy != null) {
+
+                Position pos = mapData.way[enemy.getPositionIndex()];
+
+                if (enemy.getPositionIndex() == 0) {
+
+                    map[pos.x][pos.y].setImage(Images.PORTALENEMY);
+                } else if (enemy.getPositionIndex() == mapData.way.length - 1) {
+
+                    map[pos.x][pos.y].setImage(Images.TARGETENEMY);
+                } else {
+
+                    map[pos.x][pos.y].setImage(Images.WAYENEMY);
+                }
+            }
         }
     }
 

@@ -44,9 +44,14 @@ public class Enemy {
         this.currentPositionIndex++;
     }
     
-    public void onDamage() {
+    public void onDamage(int damage) {
 
-        Player.enemygetKilled(this);
+        hp -= damage;
+
+        if (hp <= 0) {
+
+            Player.enemygetKilled(this);
+        }
     }
     
     public void onReachEnd() {

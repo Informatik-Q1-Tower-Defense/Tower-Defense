@@ -4,13 +4,15 @@ import java.util.LinkedList;
 
 public class Wave {
    
-    LinkedList<Enemy> enemyList;
+    public LinkedList<Enemy> enemyList;
     
-    public Wave(int amount) {
+    public Wave(double level) {
+
+        enemyList = new LinkedList<Enemy>();
         
-        for(int i = 0; i < amount; i++) {
+        for(int i = 0; i < 10 * level; i++) {
             
-            enemyList.add(new Enemy(5, 50, 1, 25));
+            enemyList.add(new Enemy((int) level/10, (int) level/10, (int) (1.0/level), (int) level));
         }
     }
     
