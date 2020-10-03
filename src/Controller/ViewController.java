@@ -25,7 +25,7 @@ public class ViewController extends Application {
 
         //KonfigurationsTeil
 
-        this.view = new GameView(0, 0, Player.getMap());
+        view = new GameView(0, 0, Player.getMap());
 
         Pane root = new Pane();
         Scene scene = new Scene(root, this.view.getWidth(), this.view.getHeight());

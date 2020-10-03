@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class GameView extends View {
 
-    private MapView map;
+    public MapView map;
     private LibraryView library;
 
     public GameView(int x, int y, Map mapData) {

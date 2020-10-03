@@ -1,17 +1,17 @@
 package Controller;
 
+import View.*;
+
 public class GameController {
 
     private Thread main = Thread.currentThread();
     private Thread game;
 
-    private void gameProcedure() {
-
+    public GameController(MapView map) {
 
     }
 
-    private void stop() {
-
+    protected void start() {
 
     }
 }

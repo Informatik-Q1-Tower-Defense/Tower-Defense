@@ -13,7 +13,7 @@ public class MapView extends View {
 
     private ImageView[][] map;
     public Map mapData;
-    private Wave wave;
+    public Wave wave;
 
     public MapView(int x, int y, Map mapData) {
 
