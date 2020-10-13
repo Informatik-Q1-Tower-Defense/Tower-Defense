@@ -2,7 +2,6 @@ package View;
 
 import Model.Map;
 import javafx.scene.Node;
-import Model.Wave;
 import java.util.ArrayList;
 
 public class GameView extends View {
@@ -17,11 +16,6 @@ public class GameView extends View {
         library = new LibraryView(map.getWidth(), 0, map.getHeight()/60);
         super.setBounds(map.getWidth() + library.getWidth(), map.getHeight());
         super.setCenter(x,y);
-
-        Wave wave = new Wave(1);
-        map.addWave(wave);
-        wave.enemyList.getFirst().move();
-        this.update();
     }
 
     @Override
