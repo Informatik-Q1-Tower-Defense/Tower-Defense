@@ -15,10 +15,9 @@ public class MapView extends View {
     public Map mapData;
     public Wave wave;
 
-    public MapView(int x, int y, Map mapData) {
+    public MapView(Map mapData) {
 
         super(mapData.width * 30, mapData.height * 30);
-        super.setCenter(x,y);
 
         this.mapData = mapData;
 

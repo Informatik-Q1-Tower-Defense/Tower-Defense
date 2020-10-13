@@ -9,10 +9,11 @@ public class GameView extends View {
     public MapView map;
     private LibraryView library;
 
-    public GameView(int x, int y, Map mapData) {
+    public GameView(int x, int y, MapView map) {
 
         super(0,0);
-        map = new MapView(0,0,mapData);
+        this.map = map;
+        this.map.setCenter(0, 0);
         library = new LibraryView(map.getWidth(), 0, map.getHeight()/60);
         super.setBounds(map.getWidth() + library.getWidth(), map.getHeight());
         super.setCenter(x,y);
