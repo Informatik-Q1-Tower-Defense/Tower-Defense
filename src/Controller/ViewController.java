@@ -14,6 +14,7 @@ import java.util.LinkedList;
 public class ViewController extends Application {
 
     private Stage stage;
+    private Thread game;
 
     public void start(Stage primaryStage) {
 
@@ -23,8 +24,8 @@ public class ViewController extends Application {
 
         Player.setMap(new Map("levels/level_05.txt"));
         Player.setMoney(1000);
-        Player.setHp(1000);
-        Player.setOnGameOver(() -> {});
+        Player.setHp(100);
+        Player.setOnGameOver(() -> {game.interrupt();});
 
         //KonfigurationsTeil
 
@@ -40,6 +41,9 @@ public class ViewController extends Application {
         MapView view = new MapView(mapData);
 
         show(new GameView(0, 0, view));
+
+        game = new Thread(new GameController(view));
+        game.start();
     }
 
     private void show(View view) {

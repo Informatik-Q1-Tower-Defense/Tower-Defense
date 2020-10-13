@@ -58,13 +58,13 @@ public class MenuView extends View {
                 x = 20;
                 btn.setLayoutX(x);
                 btn.setLayoutY(y);
-                y += 120;
             }
             else {
 
                 x = 140;
                 btn.setLayoutX(x);
                 btn.setLayoutY(y);
+                y += 120;
             }
             File currentFile = files[i];
 

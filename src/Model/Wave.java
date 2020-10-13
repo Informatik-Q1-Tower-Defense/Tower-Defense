@@ -12,12 +12,7 @@ public class Wave {
         
         for(int i = 0; i < 10 * level; i++) {
             
-            enemyList.add(new Enemy((int) level/10, (int) level/10, (int) (1.0/level), (int) level));
+            enemyList.add(new Enemy((int) 100, (int) level/10, (int) (1.0/level), (int) level));
         }
-    }
-    
-    public void move() {
-       
-       enemyList.forEach((enemy) -> {enemy.move();});
     }
 }

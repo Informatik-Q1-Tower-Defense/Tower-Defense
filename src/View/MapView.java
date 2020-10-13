@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class MapView extends View {
 
-    private ImageView[][] map;
+    public ImageView[][] map;
     public Map mapData;
     public Wave wave;
 

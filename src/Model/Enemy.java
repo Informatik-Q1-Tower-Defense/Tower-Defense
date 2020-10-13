@@ -5,7 +5,6 @@ public class Enemy {
 
     public int hp, speed;
     private int damage;
-    private String imageSource = "";
     private int win;
     
     private int currentPositionIndex;

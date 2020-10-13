@@ -22,11 +22,15 @@ public class GameController implements Runnable {
 
         map.addWave(currentWave);
 
-        for(int i = 0; i < wayLength; i++) {
+        moveEnemy(currentWave.enemyList.getFirst());
+        moveEnemy(currentWave.enemyList.getFirst());
+        moveEnemy(currentWave.enemyList.get(2));
 
-            currentWave.enemyList.getFirst().move();
+        for(int i = 0; i < wayLength - 1; i++) {
 
-            map.update();
+            moveEnemy(currentWave.enemyList.getFirst());
+            moveEnemy(currentWave.enemyList.get(1));
+            moveEnemy(currentWave.enemyList.get(2));
 
             try {
 
@@ -37,5 +41,35 @@ public class GameController implements Runnable {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void moveEnemy(Enemy enemy) {
+
+        Position pos = map.mapData.way[enemy.getPositionIndex()];
+
+        if (enemy.getPositionIndex() != 0 && enemy.getPositionIndex() != wayLength - 1) {
+
+            map.map[pos.x][pos.y].setImage(Images.WAY);
+        }
+        else if (enemy.getPositionIndex() == 0) {
+
+            map.map[pos.x][pos.y].setImage(Images.PORTAL);
+        }
+        else {
+
+            map.map[pos.x][pos.y].setImage(Images.TARGET);
+        }
+        enemy.move();
+
+        if (enemy.getPositionIndex() == wayLength - 1) {
+
+            Player.enemyReachedEnd(enemy);
+
+            Position position = map.mapData.way[enemy.getPositionIndex()];
+
+            map.map[position.x][position.y].setImage(Images.TARGET);
+        }
+
+        map.update();
     }
 }
