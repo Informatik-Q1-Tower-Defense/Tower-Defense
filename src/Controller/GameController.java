@@ -26,12 +26,12 @@ public class GameController implements Runnable {
 
             System.out.println("Welle");
 
-            currentWave = new Wave(level);
+            currentWave = Wave.getWave(level);
             map.addWave(currentWave);
 
-            while(currentWave.enemyList.size() > 0) {
+            while(currentWave.size() > 0) {
 
-                currentWave.enemyList.forEach((enemy -> {
+                currentWave.forEach((enemy -> {
                     moveEnemy(enemy);
                 }));
 
@@ -67,7 +67,7 @@ public class GameController implements Runnable {
         if (enemy.getPositionIndex() == wayLength - 1) {
 
             Player.enemyReachedEnd(enemy);
-            currentWave.enemyList.remove(enemy);
+            currentWave.remove(enemy);
 
             Position position = map.mapData.way[enemy.getPositionIndex()];
 

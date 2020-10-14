@@ -2,24 +2,24 @@ package Model;
 
 import java.util.LinkedList;
 
-public class Wave {
-   
-    public LinkedList<Enemy> enemyList;
-    
-    public Wave(int level) { //level 1-10
+public class Wave extends LinkedList<Enemy> {
+
+    public static Wave getWave(int level) {
 
         if (level == 0) {
 
-            enemyList = new LinkedList<Enemy>();
+            return new Wave();
         }
         else {
 
-            enemyList = new Wave(level - 1).enemyList;
+            Wave wave = getWave(level - 1);
 
             for(int i = 0; i < 20 / level; i++) {
 
-                enemyList.add(new Enemy(level));
+                wave.add(new Enemy(level));
             }
+
+            return wave;
         }
     }
 }
