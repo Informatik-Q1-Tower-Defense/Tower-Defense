@@ -7,9 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.Node;
-
 import java.io.File;
-import java.util.LinkedList;
 
 public class ViewController extends Application {
 
@@ -24,8 +22,15 @@ public class ViewController extends Application {
 
         Player.setMap(new Map("levels/level_05.txt"));
         Player.setMoney(1000);
-        Player.setHp(100);
-        Player.setOnGameOver(() -> {game.interrupt();});
+        Player.setHp(1000000);
+        Player.setOnGameOver(() -> {
+            game.interrupt();
+
+            MenuView menu = new MenuView();
+            menu.setOnSelection((file -> didStartGame(file)));
+
+            show(menu);
+        });
 
         //KonfigurationsTeil
 
@@ -42,7 +47,8 @@ public class ViewController extends Application {
 
         show(new GameView(0, 0, view));
 
-        game = new Thread(new GameController(view));
+        game = new Thread(new GameController(view, 1));
+        game.setDaemon(true);
         game.start();
     }
 

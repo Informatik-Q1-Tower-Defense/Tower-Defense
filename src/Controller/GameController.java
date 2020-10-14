@@ -8,42 +8,45 @@ public class GameController implements Runnable {
     private MapView map;
     private int wayLength;
     private Wave currentWave;
+    private int startlevel;
 
-    public GameController(MapView map) {
+    public GameController(MapView map, int level) {
 
         this.map = map;
+        this.startlevel = level;
         wayLength = map.mapData.way.length;
     }
 
     @Override
     public void run() {
 
-        currentWave = new Wave(1);
+        System.out.println(Thread.currentThread().getName());
 
-        map.addWave(currentWave);
+        for (int level = startlevel; level <= 10; level++) {
 
-        moveEnemy(currentWave.enemyList.getFirst());
-        moveEnemy(currentWave.enemyList.getFirst());
-        moveEnemy(currentWave.enemyList.get(2));
+            System.out.println("Welle");
 
-        for(int i = 0; i < wayLength - 1; i++) {
+            currentWave = new Wave(level);
+            map.addWave(currentWave);
 
-            moveEnemy(currentWave.enemyList.getFirst());
-            moveEnemy(currentWave.enemyList.get(1));
-            moveEnemy(currentWave.enemyList.get(2));
+            while(currentWave.enemyList.size() > 0) {
 
-            try {
+                currentWave.enemyList.forEach((enemy -> {
+                    moveEnemy(enemy);
+                }));
 
-                Thread.sleep(1000);
-
-            } catch (InterruptedException e) {
-
-                e.printStackTrace();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
     private void moveEnemy(Enemy enemy) {
+
+        System.out.println(Thread.currentThread().getName());
 
         Position pos = map.mapData.way[enemy.getPositionIndex()];
 
@@ -64,6 +67,7 @@ public class GameController implements Runnable {
         if (enemy.getPositionIndex() == wayLength - 1) {
 
             Player.enemyReachedEnd(enemy);
+            currentWave.enemyList.remove(enemy);
 
             Position position = map.mapData.way[enemy.getPositionIndex()];
 

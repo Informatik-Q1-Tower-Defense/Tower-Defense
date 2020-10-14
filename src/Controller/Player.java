@@ -50,6 +50,7 @@ public class Player {
     }
 
     public static void enemyReachedEnd(Enemy enemy) {
+
         hp -= enemy.getDamage();
 
         if(hp <= 0) {
