@@ -15,7 +15,7 @@ public class Enemy {
 
         if (level < 1 || level > 10) {
 
-            throw new IllegalArgumentException("Lebel 1-10");
+            throw new IllegalArgumentException("Level 1-10");
         }
 
         switch(level) {
