@@ -89,6 +89,14 @@ public class MapView extends View {
             }
         }
     }
+    
+    public void onShot(Tower t, Enemy target) {
+     
+        Thread t = new Thread(() -> {
+            //linie wird erstellt und in MapView angezeigt
+            //update() entsprechend erweitern
+        });
+    }
 
     public void update() {
 
